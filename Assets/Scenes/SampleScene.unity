@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42bbc85331b2130409972e10a0c2bd84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazardPrefab: {fileID: 8480258772542524431, guid: 266cbdfbfb01b5646b9d78fe2ef8f015, type: 3}
+  hazardPrefab: {fileID: 1817121901864617829, guid: 4f21a5f8e68da4940aecc323e324ecae, type: 3}
 --- !u!4 &443420713
 Transform:
   m_ObjectHideFlags: 0
