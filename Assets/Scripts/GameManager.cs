@@ -39,6 +39,9 @@ public class GameManager : MonoBehaviour
     {
       var x = Random.Range(-12f, 12f);
       var drag = Random.Range(0f, 3f);
+
+      if (!isGameOver && i == 2) x = move.GetPlayerXPosition() + 3.5f;
+
       var hazard = Instantiate(hazardPrefab, new Vector3(x, 11, 12), Quaternion.identity);
 
       hazard.GetComponent<Rigidbody>().drag = drag;

@@ -7,7 +7,7 @@ public class move : MonoBehaviour
   public float multiplier = 3f;
   public float maxVelocity = 5f;
 
-  private Rigidbody rb;
+  private static Rigidbody rb;
 
   void Start()
   {
@@ -17,9 +17,11 @@ public class move : MonoBehaviour
   void Update()
   {
     var horizontialInput = Input.GetAxis("Horizontal");
+    var horizontalVelocityToAdd = horizontialInput * multiplier;
+
     if (rb.velocity.magnitude <= maxVelocity)
     {
-      rb.AddForce(new Vector3(horizontialInput * multiplier, 0, 0));
+      rb.AddForce(new Vector3(horizontalVelocityToAdd, 0, 0));
     }
   }
 
@@ -28,8 +30,13 @@ public class move : MonoBehaviour
     if (collision.gameObject.CompareTag("Hazard"))
     {
       GameManager.GameOver();
-      
+
       Destroy(gameObject);
     }
+  }
+
+  public static float GetPlayerXPosition(){
+
+    return rb.position.x;
   }
 }
