@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
   private IEnumerator SpawnHazards()
   {
-    var hazardToSpawn = Random.Range(1, 5);
+    var hazardToSpawn = Random.Range(1, 3);
 
     for (int i = 0; i < hazardToSpawn; i++)
     {
