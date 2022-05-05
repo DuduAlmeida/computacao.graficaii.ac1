@@ -4,25 +4,32 @@ using UnityEngine;
 
 public class move : MonoBehaviour
 {
-    public float multiplier = 3f;
-    public float maxVelocity = 5f;
+  public float multiplier = 3f;
+  public float maxVelocity = 5f;
 
-    private Rigidbody rb;
+  private Rigidbody rb;
 
-    void Start() {
-        rb = GetComponent<Rigidbody>();
+  void Start()
+  {
+    rb = GetComponent<Rigidbody>();
+  }
+
+  void Update()
+  {
+    var horizontialInput = Input.GetAxis("Horizontal");
+    if (rb.velocity.magnitude <= maxVelocity)
+    {
+      rb.AddForce(new Vector3(horizontialInput * multiplier, 0, 0));
     }
+  }
 
-    void Update() {
-        var horizontialInput = Input.GetAxis("Horizontal");
-        if (rb.velocity.magnitude <= maxVelocity) { 
-            rb.AddForce(new Vector3(horizontialInput * multiplier,0,0));
-        }
+  private void OnCollisionEnter(Collision collision)
+  {
+    if (collision.gameObject.CompareTag("Hazard"))
+    {
+      GameManager.GameOver();
+      
+      Destroy(gameObject);
     }
-
-    private void OnCollisionEnter(Collision collision){
-        if(collision.gameObject.CompareTag("Hazard")){
-            Destroy(gameObject);
-        }
-    }
+  }
 }
