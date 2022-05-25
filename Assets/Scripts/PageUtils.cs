@@ -17,10 +17,14 @@ public class PageUtils : MonoBehaviour
 
   }
 
-
   public void StartGame()
   {
     SceneManager.LoadScene("Game");
+  }
+
+  public void ReloadGame()
+  {
+    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
   }
 
   public void QuitGame()

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
   public GameObject hazardPrefab;
+  public GameObject restartMenuCanvas;
   public TMPro.TextMeshPro scoreText;
 
   private int score = 0;
@@ -18,6 +19,8 @@ public class GameManager : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    restartMenuCanvas.gameObject.SetActive(isGameOver);
+    
     if (isGameOver) return;
 
     timer += Time.deltaTime;
@@ -56,5 +59,10 @@ public class GameManager : MonoBehaviour
   public static void GameOver()
   {
     isGameOver = true;
+  }
+
+  public static void RestartGame()
+  {
+    isGameOver = false;
   }
 }
