@@ -5,14 +5,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
   public GameObject hazardPrefab;
-  public GameObject restartMenuCanvas;
+  public static AudioSource HitSound;
   public TMPro.TextMeshPro scoreText;
+  public GameObject restartMenuCanvas;
 
   private int score = 0;
   private float timer;
   private static bool isGameOver = false;
   void Start()
   {
+    HitSound = GetComponent<AudioSource>();
     StartCoroutine(SpawnHazards());
   }
 
@@ -58,6 +60,7 @@ public class GameManager : MonoBehaviour
 
   public static void GameOver()
   {
+    HitSound.Play();
     isGameOver = true;
   }
 
