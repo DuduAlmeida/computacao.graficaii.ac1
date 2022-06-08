@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
   {
     HitSound.Play();
     isGameOver = true;
+    score = 0;
   }
 
   public static void RestartGame()
@@ -79,6 +80,7 @@ public class GameManager : MonoBehaviour
   }
 
   public static void OnColideWithSyringe(){
+    PageUtils.PlayBonusSound();
     score += 10;
     timer = 1f;
   }

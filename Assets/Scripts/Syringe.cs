@@ -8,12 +8,12 @@ public class Syringe : MonoBehaviour
 
   private void Start()
   {
-    rotation = new Vector3(0, 0, 0.5f);
+    // rotation = new Vector3(0, 0, 0.5f);
   }
 
   private void Update()
   {
-    transform.Rotate(rotation);
+    // transform.Rotate(rotation);
   }
 
   private void OnCollisionEnter(Collision collision)
