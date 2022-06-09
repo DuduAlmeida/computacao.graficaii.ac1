@@ -16,9 +16,10 @@ public class Hazard : MonoBehaviour
   {
     transform.Rotate(rotation * Time.deltaTime);
   }
+
   private void OnCollisionEnter(Collision collision)
   {
-    if (!collision.gameObject.CompareTag("Hazard"))
+    if (!collision.gameObject.CompareTag("Syringe") && !collision.gameObject.CompareTag("Hazard"))
     {
       Destroy(gameObject);
     }

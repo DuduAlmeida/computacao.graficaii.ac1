@@ -6,14 +6,19 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
   public GameObject hazardPrefab;
+  public GameObject syringePrefab;
   public static AudioSource HitSound;
-  public TMPro.TextMeshPro scoreText;
   public GameObject restartMenuCanvas;
+<<<<<<< HEAD
   public Image backgroundMenu;
+=======
+  public TMPro.TextMeshPro scoreText;
+>>>>>>> 5179536408fbf9f1908855cadf74567f2995fc34
 
-  private int score = 0;
-  private float timer;
+  private static float timer;
+  private static int score = 0;
   private static bool isGameOver = false;
+
   void Start()
   {
     HitSound = GetComponent<AudioSource>();
@@ -78,7 +83,14 @@ public class GameManager : MonoBehaviour
       var x = Random.Range(-12f, 12f);
       var drag = Random.Range(0f, 3f);
 
-      if (!isGameOver && i == 2) x = move.GetPlayerXPosition() + 3.5f;
+      if (!isGameOver && i == 1){
+        var syringe = Instantiate(syringePrefab, new Vector3(Random.Range(-12f, 12f), 11, 12), Quaternion.identity);
+        syringe.GetComponent<Rigidbody>().drag = drag;
+      }
+
+      if (!isGameOver && i == 2){
+        x = move.GetPlayerXPosition() + 3.5f;
+      }
 
       var hazard = Instantiate(hazardPrefab, new Vector3(x, 11, 12), Quaternion.identity);
 
@@ -95,10 +107,17 @@ public class GameManager : MonoBehaviour
   {
     HitSound.Play();
     isGameOver = true;
+    score = 0;
   }
 
   public static void RestartGame()
   {
     isGameOver = false;
+  }
+
+  public static void OnColideWithSyringe(){
+    PageUtils.PlayBonusSound();
+    score += 10;
+    timer = 1f;
   }
 }

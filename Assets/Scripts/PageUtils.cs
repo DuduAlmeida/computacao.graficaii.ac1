@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class PageUtils : MonoBehaviour
 {
+  public static AudioSource HealSound;
+
   // Start is called before the first frame update
   void Start()
   {
-
+    HealSound = GetComponent<AudioSource>();
   }
 
   // Update is called once per frame
@@ -37,5 +39,10 @@ public class PageUtils : MonoBehaviour
 #endif
 
     Application.Quit();
+  }
+
+  public static void PlayBonusSound()
+  {
+    HealSound.Play();
   }
 }
