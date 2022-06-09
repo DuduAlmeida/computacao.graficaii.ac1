@@ -6080,11 +6080,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hazardPrefab: {fileID: 1817121901864617829, guid: 4f21a5f8e68da4940aecc323e324ecae, type: 3}
-<<<<<<< HEAD
-=======
   syringePrefab: {fileID: 4154962922328077355, guid: bdc2a76616d39ce4d98193d4577721bd, type: 3}
   restartMenuCanvas: {fileID: 135711981}
->>>>>>> 5179536408fbf9f1908855cadf74567f2995fc34
   scoreText: {fileID: 1304276392}
   restartMenuCanvas: {fileID: 135711981}
   backgroundMenu: {fileID: 254177325}
