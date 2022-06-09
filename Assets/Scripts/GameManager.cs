@@ -9,11 +9,8 @@ public class GameManager : MonoBehaviour
   public GameObject syringePrefab;
   public static AudioSource HitSound;
   public GameObject restartMenuCanvas;
-<<<<<<< HEAD
   public Image backgroundMenu;
-=======
   public TMPro.TextMeshPro scoreText;
->>>>>>> 5179536408fbf9f1908855cadf74567f2995fc34
 
   private static float timer;
   private static int score = 0;
