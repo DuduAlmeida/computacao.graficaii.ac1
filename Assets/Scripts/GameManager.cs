@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
   public static AudioSource HitSound;
   public TMPro.TextMeshPro scoreText;
   public GameObject restartMenuCanvas;
+  public Image backgroundMenu;
 
   private int score = 0;
   private float timer;
@@ -21,6 +23,19 @@ public class GameManager : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    if (Input.GetKeyDown(KeyCode.Escape))
+    {
+      if (Time.timeScale == 0 )
+      {
+        StartCoroutine(ScaleTime(0, 1, 0.5f));
+        backgroundMenu.gameObject.SetActive(value: false);
+      }
+      if (Time.timeScale == 1)
+      {
+        StartCoroutine(ScaleTime(1, 0, 0.5f));
+        backgroundMenu.gameObject.SetActive(value: true);
+      }
+    }
     restartMenuCanvas.gameObject.SetActive(isGameOver);
     
     if (isGameOver) return;
@@ -34,6 +49,24 @@ public class GameManager : MonoBehaviour
 
       timer = 0;
     }
+  }
+
+  IEnumerator ScaleTime(float start, float end, float duration)
+  {
+    float lastTime = Time.realtimeSinceStartup;
+    float timer = 0.0f;
+
+    while(timer < duration)
+    {
+      Time.timeScale = Mathf.Lerp(start, end, timer / duration);
+      Time.fixedDeltaTime = 0.02f * Time.timeScale;
+      timer += (Time.realtimeSinceStartup - lastTime);
+      lastTime = Time.realtimeSinceStartup;
+      yield return null;
+    }
+
+    Time.timeScale = end;
+    Time.fixedDeltaTime = 0.02f * end;
   }
 
   private IEnumerator SpawnHazards()

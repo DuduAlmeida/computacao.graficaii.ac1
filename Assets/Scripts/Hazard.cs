@@ -8,13 +8,13 @@ public class Hazard : MonoBehaviour
 
   private void Start()
   {
-    var xRotation = Random.Range(0.2f, 1f);
+    var xRotation = Random.Range(90f, 180f);
     rotation = new Vector3(1, 0);
   }
 
   private void Update()
   {
-    transform.Rotate(rotation);
+    transform.Rotate(rotation * Time.deltaTime);
   }
   private void OnCollisionEnter(Collision collision)
   {
